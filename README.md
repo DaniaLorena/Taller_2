@@ -235,9 +235,12 @@ if __name__ == "__main__":
 
 ### Octavo Punto
 Desarrollar un programa que dadas dos listas determine que elementos tiene la primer lista que no tenga la segunda lista. Ejemplo:
-| lista1: |1, 'Hola', -12.3, True |
-| lista2: | [11, -12.3, 'Hola', False  |
-| salida: | [1, True] |
+Lista  | elementos
+------------- | -------------
+lista1: | [1, 'Hola', -12.3, True]
+lista2: |[11, -12.3, 'Hola', False]
+salida:  |[1, True]
+
 > Explicación:
 >En el punto 8 se nos solicita comparar 2 litas y retornar los elementos que se encuentran en la primera lista y no se encuentran en la segunda.
 Para eso creamos una tercera lista donde se almacenan los datos faltantes, para eso primero recorremos la primera lista y comparamos los elementos con la segunda lista, si los elementos no se encuentran en la 
