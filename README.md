@@ -96,7 +96,7 @@ if __name__ == "__main__":
 ```
 ### Cuarto Punto
 Diseñar una función que permita calcular una aproximación de la función coseno alrededor de 0 para cualquier valor x (real), utilizando los primeros n términos de la serie de Taylor. nota: use math para traer la función coseno y mostrar la diferencia entre el valor real y la aproximación. Calcule con cuántos términos de la serie (i.e: cuáles valores de n), se tienen errores del 10%, 1%, 0.1% y 0.001%.
-[![Captura-de-pantalla-2024-08-21-212012.png](https://i.postimg.cc/4dWN3MWF/Captura-de-pantalla-2024-08-21-212012.png)](https://postimg.cc/ygSzQf4F)
+$$cos(x) =\sum_{n=0}^{\infty}(-1)^{n}\frac{x^{2n}}{(2n)!}$$
 > Explicación:
 > En el punto 4 se nos solicita que utilizando las series de taylor aproximemos el valor del coseno para un ángulo en radianes y despues determinar cuantos polinomios se necesitan para llegar a cierto porcentaje de desviación.
 > Primero conociendo la función de Taylor del coseno que es:
