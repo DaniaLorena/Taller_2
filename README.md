@@ -277,7 +277,7 @@ Resolver el punto 7 del taller 1 usando operaciones con vectores.
 > Explicación:
 
 ### Décimo Punto
-Resolver el punto 7 del taller 1 usando operaciones con vectores.
+Desarrolle una función que, independientemente de los números que se encuentran en la lista A, tome aquellos números que son múltiplos de 3 y los guarde en una lista nueva, la cual debe ser retornada por la función. Implemente la perspectiva de un patrón de acumulación y también de comprensión de listas.
 > Explicación:
 > En el punto 10 se nos socilita que a los números de una lista tome aquellos números que son multiplos de 3 y los seleccione en otra lista.
 Se nos pone como reto hacerlo sin utilizar el operador modulo (%), por lo que primero partimos del hecho de que un número siempre sera multiplo de 3 siempre y cuando la suma de sus digitos de multiplo de 3
