@@ -241,7 +241,7 @@ lista2: |[11, -12.3, 'Hola', False]
 salida:  |[1, True]
 
 > Explicación:
->En el punto 8 se nos solicita comparar 2 litas y retornar los elementos que se encuentran en la primera lista y no se encuentran en la segunda.
+>En el punto 8 se nos solicita comparar 2 listas y retornar los elementos que se encuentran en la primera lista y no se encuentran en la segunda.
 Para eso creamos una tercera lista donde se almacenan los datos faltantes, para eso primero recorremos la primera lista y comparamos los elementos con la segunda lista, si los elementos no se encuentran en la 
 segunda lista se van agregando a la tercera lista.
 >
@@ -287,28 +287,27 @@ Escriba un programa que pida 5 números reales y calcule las siguientes operacio
 - La potencia del mayor número elevado al menor número
 - La raíz cúbica del menor número
 ```python
-def promedio (lista:float): #Se Crean funciones para obtener cada dato que se pide
-    lista:float = lista
+def promedio (lista:float)->float: #Se Crean funciones para obtener cada dato que se pide
     suma : float = 0
-    for i in range (len (lista)):
+    for i in range (len (lista)): #Se crea un bucle que va a recorrer la lista
         suma = suma + lista[i] #Se suman todos los terminos de la lista
-    promedio : float = suma / len(lista)
+    promedio : float = suma / len(lista) #Se toma la suma total y se divide entre la canitdad de terminos que tiene la lista
     print (f"EL promedio es: {promedio}")
 
 def ordenar_ascedente (lista:float)->list:
-    lista.sort()
-    return lista
+    lista.sort() #Se utiliza el metodo *sort* para organizar la lista de forma ascedente
+    return lista #Retorna la lista ya organizada
 
 def ordenar_descendente (lista:float)->list:
-    lista.sort(reverse = True)
-    return lista
+    lista.sort(reverse = True) #Se utiliza el método de la función anterior pero en sentido contrario
+    return lista #Retorna la lista de forma descendiente
 
 
 def promedio_multiplicativo (lista:float)->float:
     producto : float = 1
-    for i in range (len (lista)):
-        producto *= lista[i]
-    promedio : float = producto** (1/len(lista))
+    for i in range (len (lista)): #Se recorre la lista
+        producto *= lista[i] #Cada elemento de la lista se multiplica
+    promedio : float = producto** (1/len(lista)) #el resultado de la multiplicacion de los elementos de la lista elevado a la raiz de la cantidad de operadores
     print (f"EL promedio multiplicativo es: {promedio}")
     return promedio
 
