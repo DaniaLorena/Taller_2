@@ -3,7 +3,7 @@
 > - Rafael David Martínez Ovallos
 > - Dania Lorena Pérez Moreno
 >
-[![logo-grupo.png](https://i.postimg.cc/T1KTDnfG/logo-grupo.png)](https://postimg.cc/vxdRRg4S"Logo Mecaprores")
+[![logo-grupo.png](https://i.postimg.cc/T1KTDnfG/logo-grupo.png)](https://postimg.cc/vxdRRg4S)
 ### Primer Punto
 Desarrollar un programa que ingrese un número entero n y separe todos los digitos que componen el número. Pista: Utilice los operadores módulo (%) y división entera (//).
 > Explicación:
@@ -11,20 +11,20 @@ Desarrollar un programa que ingrese un número entero n y separe todos los digit
 >  Al obtener el divisor adecuado, se crea un bucle que va a ir separando digito a digito, diviendo de forma entera por el divisor obtenido anteriormente, luego se obtiene el modulo de esa division y el divisor actualiza su valor dividiendo de forma entera entre 10. Este bucle se ejecuta hasta que el divisor sea cero
 
 ```python
-def separar(numero):
+def separar(numero: int):
     if numero < 0: #Si el numero es negativo se multiplica por menos 1 para obtener su valor positivo
         numero *= -1
 
-    divisor = 1 # Calculamos el número de dígitos
+    divisor : int = 1 # Calculamos el número de dígitos
     while numero // divisor >= 10: #Se crea un bucle while para saber que divisor es el indicado para obtener el primer digito
         divisor *= 10
 
     i : int = 0 #Se crea otro bucle while para ir separando los digitos por orden
     while divisor > 0:
-        digito = numero // divisor  #Se obtiene el primer digito
+        digito  = numero // divisor  #Se obtiene el primer digito
         print(digito, end=" ")
         numero = numero % divisor  #Se actualiza el valor del numero por el modulo de la operacion
-        divisor = divisor // 10 #En cada iteracion se va simplificando el divisor
+        divisor = divisor // 10 # En cada iteracion se va simplificando el divisor
         i+=1
     return digito, i
 
@@ -78,7 +78,7 @@ Desarrollar un programa que permita ingresar dos números enteros y determinar s
 ```python
 def determinar (num_1 : int, num_2 : int): #Se crea una funcion que va a comparar los numeros
     numero : int = num_1
-    suma =0    
+    suma: int = 0    
     while num_1 > 0: #Se crea un bucle      
         suma = num_1 % 10 + suma*10   #Separa el  ultimo digito y se multiplica x 10 la suma para obtener el reveso
         #se obtiene la parte decimal
@@ -90,8 +90,8 @@ def determinar (num_1 : int, num_2 : int): #Se crea una funcion que va a compara
 
 if __name__ == "__main__":
     #Se piden los numeros
-    numero_1 = int(input("Ingrese el primer número entero: "))
-    numero_2 = int(input("Ingrese el segundo número entero: "))
+    numero_1 : int = int(input("Ingrese el primer número entero: "))
+    numero_2 : int = int(input("Ingrese el segundo número entero: "))
     determinar (numero_1, numero_2)
 ```
 ### Cuarto Punto
@@ -148,19 +148,19 @@ Desarrollar un programa que permita determinar el Minimo Comun Multiplo de dos n
 > De acuerdo al algoritmo de Euclides, se comienza por dividir los dos numeros (a/ b)  y se obtiene el modulo entre ellos, el modulo pasar a ser el divisor y el numero menor pasa a ser el dividendo. Se obtiene el modulo de la division entre estos nuevos valores, las variables se van actualizando hasta que el modulo sea 0. Esa última iteración representa el MCD (Máximo Común Divisor), como lo que nos piden es el mcm (Minimo Comun Multiplo), se utiliza la formula de donde la multiplicacion de los dos numeros es igual a la multiplicacion entre el mcm y el mcd, se despeja el mcm y se obtiene el resultado pedido.
 > 
 ```python
-def mcd (x_1, y_1):
-    mod = x_1 % y_1 #Se obtiene el primer modulo entre los numeros ingresado
-    mod_previo = mod
+def mcd (x_1 : int , y_1 : int)->int:
+    mod : int = x_1 % y_1 #Se obtiene el primer modulo entre los numeros ingresado
+    mod_previo : int = mod
     while mod !=0: # Se propone un bucle que se ejecuta siempre y cuando el modulo sea diferente de cero
         mod_previo = mod #Se guarda el valor del modulo antes de que este se actualice en la iteracion
-        x_a = y_1  # El menor numero pasa a ser el dividendo
-        y_a =mod  # El modulo pasar a ser el divisor
+        x_a : int = y_1  # El menor numero pasa a ser el dividendo
+        y_a : int = mod  # El modulo pasar a ser el divisor
         mod = x_a % y_a #Se actualiza el valor del modulo
         if (mod == 0): #Se evalua si el modulo es cero sale de la iteracion
             break
     return mod_previo #Se retorna el ultimo valor del modulo antes de que este se hiciera cero
 
-def mcm (x_1, y_1):
+def mcm (x_1: int, y_1: int)->int:
     max_comun_div = mcd (x_1, y_1) #Se llama la funcion
     mcm = (x_1/ max_comun_div)*y_1  #Se despeja el mcm
     return mcm 
@@ -213,11 +213,11 @@ Desarrollar un programa que determine si en una lista se encuentra una cadena de
 > Explicación: Se ingresa una lista por teclado, se crea un funcion en la cual se recorra por las pociciones, en cada posicion el programa va separa cada elemento y guardarlo en una variable, buscara y contara la cantidad de letras que se solicita por el metodo *count*, se sumaran todas las vocales que se repital guardandose en una variable que posteriormente se evaluara si esta cantidad supera a 2 y si es verdadero se imprimiran las cadenas que cumpla estas condiciones
 >
 ```python
-def contar (lista):
+def contar (lista : str):
     for i in range (len (lista)): # Va a recorrer todas las posiciones de la lista
-        cadena = lista [i] # cada elemento se va a guardar en una variable
+        cadena : str = lista [i] # cada elemento se va a guardar en una variable
         for j in range (len (cadena)):
-            cont = cadena.count ("a") + cadena.count ("e") + cadena.count ("i") + cadena.count ("o") + cadena.count ("u")   # Se busca en el elemento cuantas veces se repiten las vocales
+            cont : int = cadena.count ("a") + cadena.count ("e") + cadena.count ("i") + cadena.count ("o") + cadena.count ("u")   # Se busca en el elemento cuantas veces se repiten las vocales
         if (cont) > 2: # Se crea un codicional en donde si se superan las dos vocales imprime la cadena
             print (cadena)
     if (cont < 2):
@@ -227,7 +227,7 @@ if __name__ == "__main__":
     cantidad :int = int(input("Ingrese la cantidad de elementos que va a tener la lista: ")) #Se le pregunta al usuario cuantas elemento va a contener la lista
     lista = [] #Se crea una lista vacia
     for i in range (cantidad): #Se empieza a llenar la lista
-        elemento = input(f"Ingrese el elemento {i+1}: ")
+        elemento : str = input(f"Ingrese el elemento {i+1}: ")
         lista.append (elemento) #Se utiliza este metodo para ir agregrando el elemento a la lista
     contar (lista)
 ```
@@ -287,7 +287,7 @@ Escriba un programa que pida 5 números reales y calcule las siguientes operacio
 - La potencia del mayor número elevado al menor número
 - La raíz cúbica del menor número
 ```python
-def promedio (lista:float)->float: #Se Crean funciones para obtener cada dato que se pide
+def promedio (lista : float)->float: #Se Crean funciones para obtener cada dato que se pide
     suma : float = 0
     for i in range (len (lista)): #Se crea un bucle que va a recorrer la lista
         suma = suma + lista[i] #Se suman todos los terminos de la lista
@@ -307,35 +307,36 @@ def promedio_multiplicativo (lista:float)->float:
     producto : float = 1
     for i in range (len (lista)): #Se recorre la lista
         producto *= lista[i] #Cada elemento de la lista se multiplica
-    promedio : float = producto** (1/len(lista)) #el resultado de la multiplicacion de los elementos de la lista elevado a la raiz de la cantidad de operadores
+    promedio : float = producto** (1/len(lista)) #El resultado de la multiplicacion de los elementos de la lista elevado a la raiz de la cantidad de operadores
     print (f"EL promedio multiplicativo es: {promedio}")
     return promedio
 
-def mediana (lista:float):
-    lista = ordenar_descendente (lista)
-    mediana : float = lista [2] 
+def mediana (lista:float) -> int :
+    lista = ordenar_descendente (lista) #Se llama a la funcion de ordenar la lista
+    mediana : float = lista [2]  #Se toma el termino de la mitad de la lista
     print (f"La mediana es: {mediana}")
     return mediana
 
-def potencia (lista:float):
+def potencia (lista:float)->float:
     lista = ordenar_descendente (lista)
-    potencia : float = lista[0]**lista[4]
+    potencia : float = lista[0]**lista[4] #Se toman los valores y se elevado el numero mayor elevado al menor
     print (f"La potencia es de {lista[0]} elevado a {lista[4] } es: {potencia}")
     return potencia
 
-def raiz_cubica (lista:float):
+def raiz_cubica (lista:float)-> float:
     lista= ordenar_descendente (lista)
-    raiz : float = lista[4]**(1/3)
+    raiz : float = lista[4]**(1/3) #Se saca la raiz cubícadel menor numero, para ello se llama a la lista
     print (f"La raiz cúbica de {lista[4]} es: {raiz}")
     return raiz
     
 
 if __name__ == "__main__":
-    lista_numero : float = []
+    lista_numero : float = [] # Se crea una lista vacia
     for i in range (5):
-        numero : float =  float (input (f"Ingrese el {i+1} numero: "))
-        lista_numero.append (numero)
-    print (lista_numero)
+        numero : float =  float (input (f"Ingrese el {i+1} numero: ")) #se pide al ususario que ingrese los elementos de la lista
+        lista_numero.append (numero) #Se utiliza el metodo append para agregarlos a la lista
+#Se llaman las funcion y se imprimen los valores solicitados
+    print (lista_numero) 
     promedio (lista_numero)
     mediana(lista_numero)
     promedio_multiplicativo(lista_numero)
@@ -430,21 +431,23 @@ if __name__ == "__main__":
 ```
 ### BONO :)
 Desarrollar un algoritmo que determine si una matriz es mágica. Se dice que una matriz cuadrada es mágica si la suma de cada una de sus filas, de cada una de sus columnas y de cada diagonal es igual.
-> Explicación:
+> Explicación: Se comienza con analizar y entendir el funcionamiento de la matriz mágica, se debe tener en cuenta que esta deber ser cuadrada, es decir, que tenga la misma cantidad de filas y de columnas. Luego se le pide al usuario la dimension de la matriz, posteriormente se piden los elementos de cada fila y columna.
+> Ya completa la matriz, se busca la suma base que determinara el valor de la adicion que debe tener cada fila y columna; se obtiene sumando todos lo elementos de la matriz y diviendo sicha cantidad por la dimension de la matriz (Es decir la cantidad de filas que tiene la matriz)
+> Conociendo la suma base, se procede a crear funcion para encontrar la suma de cada fila, columna y diagonal comparando con la suma base si concuerdan con el resultado, si es así se convierte en una matriz mágica
 ```python
 
-def llenar_matriz (cantidad: int): #
+def llenar_matriz (cantidad: int): # Funcion para llenar la matriz
     matriz : int =[]
     suma_base : int = 0
     h: int =0
-    for i in range (cantidad):
+    for i in range (cantidad): # Recorre cada fila
         fila : int = []
-        for j in range (cantidad):
-            elemento: int = int(input(f"Ingrese el elemento de la fila {i+1} y columna {j+1}: "))
-            suma_base += elemento
-            fila.append(elemento)
+        for j in range (cantidad): # Recorre cada elemento de la fila (columnas)
+            elemento: int = int(input(f"Ingrese el elemento de la fila {i+1} y columna {j+1}: ")) 
+            suma_base += elemento #Se baan sumando los elementos para hallar la suma base
+            fila.append(elemento) # Se agregan los elementos a la fila
         matriz.append (fila)
-    suma_base = suma_base / cantidad
+    suma_base = suma_base / cantidad #Se obtiene el resultado de la suma base
     return matriz, suma_base
 
 def sumar_filas (matriz, suma_base):
