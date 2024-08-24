@@ -3,13 +3,14 @@
 > - Rafael David Martínez Ovallos
 > - Dania Lorena Pérez Moreno
 >
-[![logo-grupo.png](https://i.postimg.cc/T1KTDnfG/logo-grupo.png)](https://postimg.cc/vxdRRg4S)
+[![logo-grupo.png](https://i.postimg.cc/T1KTDnfG/logo-grupo.png)](https://postimg.cc/vxdRRg4S"Logo Mecaprores")
 ### Primer Punto
 Desarrollar un programa que ingrese un número entero n y separe todos los digitos que componen el número. Pista: Utilice los operadores módulo (%) y división entera (//).
 > Explicación:
-> 
+> Se pide al usuario un numero ingresado por teclado, este tiene que ser entero. La lógica que se utilizo para el desarrollo del algoritmo es utilizar modulo (%) y  division entera (//), además se opera con una base 10, se comienza por verificar si el numero es positivo, si no este se multiplicara por (-1). Después se debe obtener el divisor en base 10 por el cual el numero al efectuar division exacta separa el primer digito, se obtiene de la diviension entera entre numero y un divisor que va a ir aumentando al multiplicarse por 10 hasta que su division sea menor o igual a 10.
+>  Al obtener el divisor adecuado, se crea un bucle que va a ir separando digito a digito, diviendo de forma entera por el divisor obtenido anteriormente, luego se obtiene el modulo de esa division y el divisor actualiza su valor dividiendo de forma entera entre 10. Este bucle se ejecuta hasta que el divisor sea cero
 
-```
+```python
 def separar(numero):
     if numero < 0: #Si el numero es negativo se multiplica por menos 1 para obtener su valor positivo
         numero *= -1
@@ -54,8 +55,7 @@ for digito in numero:
 La parte entera es {numero_separado[:posicion_decimal]} y la parte decimal es {numero_separado[posicion_decimal + 1:]}
 ```
 ##### Código:
-```
-# Punto 2
+```python
 def separar_digitos(x : float):
     numero : str = str(x) # Convierte el número en String
     numero_separado = []  # Almacena los digitos separados 
@@ -73,9 +73,9 @@ if __name__ == "__main__":
 ### Tercer Punto
 Desarrollar un programa que permita ingresar dos números enteros y determinar si se tratan de números espejos, definiendo números espejos como dos números a y b tales que a se lee de izquierda a derecha igual que se lee b de derecha a izquierda, y viceversa.
 > Explicación:
-> 
-
-```
+>  Primero se debe tener en cuenta que al ser espejo debe sumar lo mismo, por ello se crea un bucle que primero separe el ultimo digito, luego se actuzalice la variable *suma*, adicionado este valor con el anterior y multiplicando por 10 para obtener el reveso de la suma, es decir, tenemos 58, al multiplicarlo por 10 obtenermos 85.
+> Posterior a esto, el numero se actualiza dividiendose enteramente entre 10 para obtener un numero con los digitos restantes, este proceso se repite hasta que en numero es igual a cero
+```python
 def determinar (num_1 : int, num_2 : int): #Se crea una funcion que va a comparar los numeros
     numero : int = num_1
     suma =0    
@@ -120,8 +120,7 @@ desviacion : float = abs((coseno_aproximado(angulo,terminos)-COSENO)/COSENO)
 > PDT: Inicialmente teniamos como condición en el ciclo while que desviacion < PORCENTAJE, tras pruebas nos dimos cuenta que la función no hacia ninguna iteración despues de cambios y cambios le preguntamos a ChatGpt el porque de esto y resulta que la desviación siempre va a ser mayor en el primer termino que mientras más se vallan agregando terminos a la función más se va a ir acercando al valor real es decir en el termino 2 tiene una desviación del 20% por ende para el termino 8 tiene que tener una desviación mucho menor al 20%.
 
 ##### Código:
-```
-# Punto 4
+```python
 import math
 angulo : float = float(input("Digite el valor del ángulo en radianes: ")) 
 COSENO : float = math.cos(angulo)
@@ -146,23 +145,24 @@ if __name__ == "__main__":
 ### Quinto Punto
 Desarrollar un programa que permita determinar el Minimo Comun Multiplo de dos numeros enteros. Abordar el problema desde una perpectiva tanto iterativa como recursiva. Pista: Puede ser de utilidad chequear el Algoritmo de Euclides para el cálculo del Máximo Común Divisor, y revisar cómo se relaciona este último con el Mínimo Común Múltiplo.
 > Explicación:
+> De acuerdo al algoritmo de Euclides, se comienza por dividir los dos numeros (a/ b)  y se obtiene el modulo entre ellos, el modulo pasar a ser el divisor y el numero menor pasa a ser el dividendo. Se obtiene el modulo de la division entre estos nuevos valores, las variables se van actualizando hasta que el modulo sea 0. Esa última iteración representa el MCD (Máximo Común Divisor), como lo que nos piden es el mcm (Minimo Comun Multiplo), se utiliza la formula de donde la multiplicacion de los dos numeros es igual a la multiplicacion entre el mcm y el mcd, se despeja el mcm y se obtiene el resultado pedido.
 > 
-```
+```python
 def mcd (x_1, y_1):
-    mod = x_1 % y_1
+    mod = x_1 % y_1 #Se obtiene el primer modulo entre los numeros ingresado
     mod_previo = mod
-    while mod !=0:
-        mod_previo = mod
-        x_a = y_1
-        y_a =mod 
-        mod = x_a % y_a
-        if (mod == 0):
+    while mod !=0: # Se propone un bucle que se ejecuta siempre y cuando el modulo sea diferente de cero
+        mod_previo = mod #Se guarda el valor del modulo antes de que este se actualice en la iteracion
+        x_a = y_1  # El menor numero pasa a ser el dividendo
+        y_a =mod  # El modulo pasar a ser el divisor
+        mod = x_a % y_a #Se actualiza el valor del modulo
+        if (mod == 0): #Se evalua si el modulo es cero sale de la iteracion
             break
-    return mod_previo
+    return mod_previo #Se retorna el ultimo valor del modulo antes de que este se hiciera cero
 
 def mcm (x_1, y_1):
-    max_comun_div = mcd (x_1, y_1)
-    mcm = (x_1/ max_comun_div)*y_1 
+    max_comun_div = mcd (x_1, y_1) #Se llama la funcion
+    mcm = (x_1/ max_comun_div)*y_1  #Se despeja el mcm
     return mcm 
 
 if __name__ == "__main__":
@@ -188,8 +188,7 @@ def repetidos (lista):
     return False 
 ```
 #### Código:
-```
-# Punto 6
+```python
 def repetidos (lista):
     elementos_no_repetidos = [] # Lista vacia para tener registro de los elementos en nuestra lista
     for elementos in lista: # Permite recorrer la lista
@@ -211,25 +210,25 @@ if __name__ == "__main__":
 ```
 ### Séptimo Punto
 Desarrollar un programa que determine si en una lista se encuentra una cadena de caracteres con dos o más vocales. Si la cadena existe debe imprimirla y si no existe debe imprimir 'No existe'.
-> Explicación:
+> Explicación: Se ingresa una lista por teclado, se crea un funcion en la cual se recorra por las pociciones, en cada posicion el programa va separa cada elemento y guardarlo en una variable, buscara y contara la cantidad de letras que se solicita por el metodo *count*, se sumaran todas las vocales que se repital guardandose en una variable que posteriormente se evaluara si esta cantidad supera a 2 y si es verdadero se imprimiran las cadenas que cumpla estas condiciones
 >
-```
+```python
 def contar (lista):
-    for i in range (len (lista)):
-        cadena = lista [i]
+    for i in range (len (lista)): # Va a recorrer todas las posiciones de la lista
+        cadena = lista [i] # cada elemento se va a guardar en una variable
         for j in range (len (cadena)):
-            cont = cadena.count ("a") + cadena.count ("e") + cadena.count ("i") + cadena.count ("o") + cadena.count ("u")   
-        if (cont) > 2:
+            cont = cadena.count ("a") + cadena.count ("e") + cadena.count ("i") + cadena.count ("o") + cadena.count ("u")   # Se busca en el elemento cuantas veces se repiten las vocales
+        if (cont) > 2: # Se crea un codicional en donde si se superan las dos vocales imprime la cadena
             print (cadena)
     if (cont < 2):
-        print ("No existe")
+        print ("No existe") 
 
 if __name__ == "__main__":
-    cantidad :int = int(input("Ingrese la cantidad de elementos que va a tener la lista: "))
-    lista = []
-    for i in range (cantidad):
+    cantidad :int = int(input("Ingrese la cantidad de elementos que va a tener la lista: ")) #Se le pregunta al usuario cuantas elemento va a contener la lista
+    lista = [] #Se crea una lista vacia
+    for i in range (cantidad): #Se empieza a llenar la lista
         elemento = input(f"Ingrese el elemento {i+1}: ")
-        lista.append (elemento)
+        lista.append (elemento) #Se utiliza este metodo para ir agregrando el elemento a la lista
     contar (lista)
 ```
 
@@ -255,7 +254,7 @@ def complemento (lista1, lista2):
     return lista3
 ```
 #### Código:
-```
+```python
 def complemento (lista1, lista2):
     lista3 = [] # Lista vacia donde se almacenan los elementos faltantes
     for elemento in lista1: # Recorre la lista
@@ -287,13 +286,12 @@ Escriba un programa que pida 5 números reales y calcule las siguientes operacio
 - Ordenar los números de forma descendente
 - La potencia del mayor número elevado al menor número
 - La raíz cúbica del menor número
-> Explicación:
-```
-def promedio (lista:float):
+```python
+def promedio (lista:float): #Se Crean funciones para obtener cada dato que se pide
     lista:float = lista
     suma : float = 0
     for i in range (len (lista)):
-        suma = suma + lista[i]
+        suma = suma + lista[i] #Se suman todos los terminos de la lista
     promedio : float = suma / len(lista)
     print (f"EL promedio es: {promedio}")
 
@@ -398,8 +396,7 @@ def lista_multiplo_3(lista):
     return multiplos_de_3
 ```
 ###### Código
-```
-# Punto 10
+```python
 def sumar_digitos(numero:int):
     suma = 0
     while numero > 0:
@@ -430,5 +427,77 @@ if __name__ == "__main__":
         Lista1.append(numero)
     Lista2 = lista_multiplo_3(Lista1)
     print(f'Da los elementos {Lista1} estos son multiplos de 3: {Lista2}')
+
+```
+### BONO :)
+Desarrollar un algoritmo que determine si una matriz es mágica. Se dice que una matriz cuadrada es mágica si la suma de cada una de sus filas, de cada una de sus columnas y de cada diagonal es igual.
+> Explicación:
+```python
+
+def llenar_matriz (cantidad: int): #
+    matriz : int =[]
+    suma_base : int = 0
+    h: int =0
+    for i in range (cantidad):
+        fila : int = []
+        for j in range (cantidad):
+            elemento: int = int(input(f"Ingrese el elemento de la fila {i+1} y columna {j+1}: "))
+            suma_base += elemento
+            fila.append(elemento)
+        matriz.append (fila)
+    suma_base = suma_base / cantidad
+    return matriz, suma_base
+
+def sumar_filas (matriz, suma_base):
+    for fila in matriz:
+        suma_fila: int = 0
+        for elemento in fila:
+            suma_fila += elemento
+    if (suma_fila == suma_base):
+        return suma_fila
+    else:
+        return (f"La suma es {suma_fila}")
+
+def sumar_columnas (matriz, suma_base):
+    for columna in range (len(matriz [0])):
+        sumar_columna: int = 0
+        for fila in matriz:
+            sumar_columna += (fila[columna])
+    if (sumar_columna == suma_base):
+        return sumar_columna
+    else:
+        return (f"La suma es {sumar_columna}")
+    
+def sumar_diagonal (matriz, suma_base):
+    diagonal : int = 0
+    for i in range(len(matriz)):
+        diagonal += matriz[i][i]
+
+    if (diagonal == suma_base):
+        return diagonal
+    else:
+        return (f"La suma es diferente a la suma base{diagonal}")
+    
+def comparar (matriz, suma_base):
+    suma_fila = sumar_filas (matriz, suma_base)
+    suma_columna = sumar_columnas (matriz, suma_base)
+    suma_diagonal = sumar_diagonal (matriz, suma_base)
+    if (suma_fila == suma_columna) and (suma_columna == suma_diagonal):
+        print (f"LA MATRIZ ES MÁGICA")
+        print (f"La suma base es: {suma_base}")
+        for i in matriz:
+            print (i, end= " ")
+            print ()
+    else: 
+        print (f"LA NO MATRIZ ES MÁGICA")
+        print (f"La suma base es: {suma_base}")
+        for i in matriz:
+            print (i, end= " ")
+            print ()
+
+if __name__ == "__main__":
+    cantidad : int = int (input("Ingrese que dimension desea que tenga la matriz cuadrada: "))
+    matriz, suma =  llenar_matriz (cantidad)
+    comparar (matriz, suma)
 
 ```
